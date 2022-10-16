@@ -8,7 +8,7 @@ var isSubsequence = function(s, t) {
     let sPointer = 0;
     for (let char of t) {
         if (char === s[sPointer]) sPointer++;
-        if (sPointer === s.length) return true;
     }
-    return false;
+    if (sPointer === s.length) return true;
+    else return false;
 };
