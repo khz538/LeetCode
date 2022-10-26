@@ -10,7 +10,6 @@ var climbStairs = function(n) {
     let fib = 0;
     while (i <= n) {
         fib = oneBefore + twoBefore
-        let temp = twoBefore
         twoBefore = oneBefore
         oneBefore = fib
         i++
