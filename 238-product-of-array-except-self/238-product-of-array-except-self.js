@@ -20,9 +20,6 @@ var productExceptSelf = function(nums) {
         runningProd *= num;
         postProducts.unshift(runningProd)
     })
-    // preProducts.pop()
-    // postProducts.shift()
-    // console.log(preProducts, postProducts)
     
     nums.forEach((num, i) => {
         if (i === 0) res.push(postProducts[1]);
