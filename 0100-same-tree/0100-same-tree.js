@@ -16,7 +16,7 @@ var isSameTree = function(p, q) {
     let [pTrav, qTrav] = [p, q];
     let pQueue = [p], qQueue = [q]
     while (pQueue.length && qQueue.length) {
-        let [pCurr, qCurr] = [pQueue.shift(), qQueue.shift()];
+        let [pCurr, qCurr] = [pQueue.pop(), qQueue.pop()];
         if (pCurr !== null && qCurr !== null) {
             if (pCurr.val !== qCurr.val) return false;
             else if ((pCurr.left && !qCurr.left) || (!pCurr.left && qCurr.left)) {
