@@ -10,8 +10,14 @@
  * @param {TreeNode} root
  * @return {boolean}
  */
-var isValidBST = function(root, min = Number.MIN_SAFE_INTEGER, max = Number.MAX_SAFE_INTEGER) {
-    if (!root) return true;
-    if (root.val <= min || root.val >= max) return false;
-    return isValidBST(root.left, min, root.val) && isValidBST(root.right, root.val, max); 
+var isValidBST = function(root) {
+    const stack = [[root, Number.MAX_SAFE_INTEGER, Number.MIN_SAFE_INTEGER]];
+    while (stack.length) {
+        let [curr, max, min] = stack.pop();
+        if (!curr) continue;
+        if (curr.val >= max || curr.val <= min) return false;
+        curr.left && stack.push([curr.left, curr.val, min]);
+        curr.right && stack.push([curr.right, max, curr.val]);
+    }
+    return true;
 };
