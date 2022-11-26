@@ -11,13 +11,13 @@
  * @return {boolean}
  */
 var isValidBST = function(root) {
-    const stack = [[root, Number.MAX_SAFE_INTEGER, Number.MIN_SAFE_INTEGER]];
-    while (stack.length) {
-        let [curr, max, min] = stack.pop();
+    const q = [[root, Number.MAX_SAFE_INTEGER, Number.MIN_SAFE_INTEGER]];
+    while (q.length) {
+        let [curr, max, min] = q.shift();
         if (!curr) continue;
         if (curr.val >= max || curr.val <= min) return false;
-        curr.left && stack.push([curr.left, curr.val, min]);
-        curr.right && stack.push([curr.right, max, curr.val]);
+        curr.left && q.push([curr.left, curr.val, min]);
+        curr.right && q.push([curr.right, max, curr.val]);
     }
     return true;
 };
