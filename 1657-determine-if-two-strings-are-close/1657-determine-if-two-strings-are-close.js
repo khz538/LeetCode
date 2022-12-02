@@ -5,7 +5,7 @@
  */
 var closeStrings = function(word1, word2) {
     if (word1.length !== word2.length) return false;
-    return swappable(word1, word2) || isAnagram(word1, word2);
+    return isAnagram(word1, word2) || swappable(word1, word2)
 };
 
 const isAnagram = (word1, word2) => {
