@@ -26,7 +26,6 @@ const swappable = (word1, word2) => {
     let vals2 = Object.values(counter2).sort((a, b) => a - b);
     let keys1 = Object.keys(counter1).sort();
     let keys2 = Object.keys(counter2).sort();
-    console.log(keys1, keys2)
     if (vals1.length !== vals2.length || keys1.length !== keys2.length) return false;
     else {
         for (let j = 0; j < vals1.length; j++) {
