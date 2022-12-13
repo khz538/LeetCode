@@ -10,15 +10,9 @@
  * @return {ListNode}
  */
 var reverseList = function(head) {
-    // init trav and prev pointers
-    let trav = head
-    let prev = null
-    
-    while (trav) {
-        let next = trav.next
-        trav.next = prev
-        prev = trav
-        trav = next
+    let prev = null;
+    while (head) {
+        [head.next, prev, head] = [prev, head, head.next];
     }
-    return prev
+    return prev;
 };
