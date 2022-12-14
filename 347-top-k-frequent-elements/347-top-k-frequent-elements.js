@@ -4,21 +4,17 @@
  * @return {number[]}
  */
 var topKFrequent = function(nums, k) {
-    const obj = {};
+    // count frequency of each number
+    const counter = new Map();
+    const bucket = [];
     const res = [];
-    nums.forEach(num => {
-        if (obj[num]) obj[num]++;
-        else obj[num] = 1;
-    })
-    console.log(obj)
-    while (res.length < k) {
-        const highestFreq = Math.max(...Object.values(obj));
-        for (let key in obj) {
-            if (obj[key] === highestFreq) {
-                res.push(key);
-                delete obj[key]
-            }
-        }
+    nums.forEach(num => counter.set(num, (counter.get(num) || 0) + 1));
+    for (let [num, frequency] of counter) {
+        bucket[frequency] = (bucket[frequency] || new Set()).add(num);
+    }
+    for (let i = bucket.length - 1; i > 0; i--) {
+        if (bucket[i]) res.push(...bucket[i]);
+        if (res.length === k) break;
     }
     return res;
 };
