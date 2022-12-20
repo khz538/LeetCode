@@ -3,11 +3,11 @@
  * @return {boolean}
  */
 var isHappy = function(n) {
-    const visited = new Set();
+    const visited = new Map();
     while (n !== 1) {
-        visited.add(n)
+        visited.set(n, n)
         n = sumSquareOfDigits(n);
-        if (visited.has(n)) return false;
+        if (visited.get(n)) return false;
     }
     return true;
 };
@@ -18,4 +18,4 @@ const sumSquareOfDigits = num => {
         acc += Number(num) * Number(num);
         return acc;
     }, 0);
-}
+};
