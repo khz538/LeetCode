@@ -5,10 +5,7 @@ class Solution:
         for i,bag in enumerate(capacity):
             space_left[i] = bag - rocks[i]
         space_left = list(space_left.values())
-        space_left.sort()
-        space_left = space_left[::-1]
-        print(space_left)
-        print(additionalRocks)
+        space_left.sort(reverse=True)
         bags = 0
         while additionalRocks > 0 and len(space_left) > 0:
             if space_left[-1] == 0:
